@@ -239,7 +239,8 @@ export default function AsciiPlayer() {
       audioCtxRef.current.resume();
     }
 
-    const wsUrl = WS_URL ?? `ws://${window.location.hostname}:3001`;
+    const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = WS_URL ?? `${proto}//${window.location.host}/ws`;
     const ws = new WebSocket(wsUrl);
     ws.binaryType = 'arraybuffer';
     wsRef.current = ws;

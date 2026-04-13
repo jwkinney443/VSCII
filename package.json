@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k -n next,ws -c green,cyan \"next dev\" \"tsx lib/ws-server.ts\"",
+    "dev": "tsx server.ts",
     "build": "next build",
-    "start": "concurrently -k -n next,ws -c green,cyan \"next start\" \"NODE_ENV=production tsx lib/ws-server.ts\""
+    "start": "NODE_ENV=production tsx server.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.97",
