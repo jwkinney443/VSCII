@@ -2,7 +2,7 @@
 
 A browser-based ASCII video player built with Next.js.
 
-<!-- demo GIF or screenshot -->
+![demo](gifs/playback.gif)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
@@ -16,11 +16,19 @@ A browser-based ASCII video player built with Next.js.
 - Color modes — full color, grayscale, red, green, blue, amber, or custom
 - Replay instantly without re-uploading
 - Record and download clips as WebM with audio
+- Right-click any frame to save it as an image
+
+| Detail slider | Color modes | Frame capture |
+|---|---|---|
+| ![detail](gifs/detail.gif) | ![color](gifs/color.gif) | ![frame](gifs/frame.png) |
 
 ## Requirements
 
 - [Node.js](https://nodejs.org) 18+
 - [FFmpeg](https://ffmpeg.org/download.html) installed and on your PATH
+  - Mac: `brew install ffmpeg`
+  - Windows: [download from ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH
+  - Linux: `sudo apt install ffmpeg`
 
 ## Getting started
 
