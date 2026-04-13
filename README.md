@@ -53,6 +53,39 @@ Open [http://localhost:3000](http://localhost:3000) and drop in a video file.
 
 When you drop a video file, it's streamed over WebSocket to a local Node.js server. FFmpeg decodes the video into raw RGB frames and extracts the audio. Each frame is mapped to ASCII characters by luminance and rendered to an HTML canvas. A `requestAnimationFrame` loop keeps the canvas in sync with the audio element's `currentTime`. Recording combines `canvas.captureStream()` with an `AudioContext` media stream destination fed into the `MediaRecorder` API.
 
+## Architecture
+
+```
+Browser                          Node.js Server
+──────────────────────────────   ──────────────────────────────
+  Drop video file
+       │
+       │  WebSocket (binary chunks)
+       ▼
+  WS Client ──────────────────►  WS Server
+                                      │
+                                      │  stdin pipe
+                                      ▼
+                                   FFmpeg
+                                   ├── video → raw RGB frames (stdout)
+                                   └── audio → .wav file
+                                      │
+                                      │  WebSocket (frame buffers)
+       ◄──────────────────────────────┘
+       │
+  Frame buffer (queue)
+       │
+  requestAnimationFrame
+  loop (keyed to audio.currentTime)
+       │
+       ▼
+  Canvas 2D — luminance → ASCII char + color
+       │
+       ├── canvas.captureStream()  ─┐
+       └── AudioContext stream      ├──► MediaRecorder → .webm download
+                                   ─┘
+```
+
 ## Stack
 
 - [Next.js](https://nextjs.org) — framework
