@@ -4,7 +4,7 @@ A browser-based ASCII video player built with Next.js.
 
 ![demo](gifs/playback.gif)
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 ![FFmpeg](https://img.shields.io/badge/FFmpeg-required-green?logo=ffmpeg)
 
@@ -36,10 +36,13 @@ A browser-based ASCII video player built with Next.js.
 git clone https://github.com/jwkinney443/vscii
 cd vscii
 npm install
-npm run dev
+npm run build
+npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) and drop in a video file.
+
+> **Note:** `npm run dev` works too but has a slow first-load compilation. The build + start flow above is recommended for normal use.
 
 ## Scripts
 
